@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MoveLeftX : MonoBehaviour
 {
-    public float speed;
+    public float speed = 30;
     private PlayerControllerX playerControllerScript;
-    private float leftBound = -10;
+    private float leftBound = -15;
 
     // Start is called before the first frame update
     void Start()
@@ -20,15 +20,12 @@ public class MoveLeftX : MonoBehaviour
         // If game is not over, move to the left
         if (playerControllerScript.gameOver ==false)
         {
-            if (playerControllerScript.gameOver)
-            {
-                transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
-            }
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
         
 
         // If object goes off screen that is NOT the background, destroy it
-        if (transform.position.x < leftBound && !gameObject.CompareTag("Background"))
+        if (transform.position.x < leftBound && !gameObject.CompareTag("Backround"))
         {
             Destroy(gameObject);
         }
